@@ -1,8 +1,8 @@
 #include <JuceHeader.h>
 
-void convertHW5HW4CODM(String fnSource, String fnDestination)
+void convertHW5HW4CODM(File source, File destination)
 {
-	XmlDocument odf(fnSource);
+	XmlDocument odf(source);
 	auto root = odf.getDocumentElement();
 
 	root->setAttribute("FileFormatVersion", "4.00");
@@ -18,12 +18,12 @@ void convertHW5HW4CODM(String fnSource, String fnDestination)
 		_General->addChildElement(Sys_ObjectID);
 	}
 
-	root->writeTo(fnDestination);
+	root->writeTo(destination);
 }
 
-void convertHW5HW4NATIVE(String fnSource, String fnDestination)
+void convertHW5HW4NATIVE(File source, File destination)
 {
-	XmlDocument odf(fnSource);
+	XmlDocument odf(source);
 	auto Hauptwerk = odf.getDocumentElement();
 
 	Hauptwerk->setAttribute("FileFormatVersion", "4.00");
@@ -89,7 +89,7 @@ void convertHW5HW4NATIVE(String fnSource, String fnDestination)
 		}
 	}
 
-	Hauptwerk->writeTo(fnDestination);
+	Hauptwerk->writeTo(destination);
 }
 
 void showHeader()
@@ -99,7 +99,7 @@ void showHeader()
 	printf("By Gernot Wurst and Michael Schmitz, 04/2020\n\n");
 	printf("License: Creative Commons CC-BY-NC-SA-4.0, see\n");
 	printf("https://creativecommons.org/licenses/by-nc-sa/4.0/ \n\n");
-	printf("Contact: contact@prospectum.com");
+	printf("Contact: contact@prospectum.com\n\n");
 	printf("------------------------------------------------------------------------------------------------------------------\n\n");
 }
 
@@ -126,23 +126,27 @@ int main (int argc, char* argv[])
 	String mode(argv[1]);
 	String fnSource(argv[2]);
 	String fnDestination(argv[3]);
-	String replace;
-	if (argc == 4) replace = String(argv[4]);
 
-	if (File(fnSource).existsAsFile())
+	String replace;
+	if (argc == 5) replace = String(argv[4]);
+
+	File source(fnSource);
+	File destination(fnDestination);
+	
+	if (!source.existsAsFile())
 	{
-		printf(" Error: Source file does not exist!\n\n");
+		printf(" Error: Source file %s does not exist!\n\n", source.getFullPathName().toStdString().c_str());
 		exit(2);
 	}
 
-	if (File(fnDestination).existsAsFile() && replace != "REPLACE")
+	if (destination.existsAsFile() && replace != "REPLACE")
 	{
-		printf(" Error: Destination file exists but must not be replaces!\n\n");
+		printf(" Error: Destination file %s exists but must not be replaced!\n\n", destination.getFullPathName().toStdString().c_str());
 		exit(3);
 	}
 
-	if (mode == "CODM")		   convertHW5HW4CODM (fnSource, fnDestination);
-	else if (mode == "NATIVE") convertHW5HW4NATIVE(fnSource, fnDestination);
+	if (mode == "CODM")		   convertHW5HW4CODM(source, destination);
+	else if (mode == "NATIVE") convertHW5HW4NATIVE(source, destination);
 	else
 	{
 		printf(" Error: Mode is %s but must be CODM or NATIVE!\n\n",mode.toStdString().c_str());
