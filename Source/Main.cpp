@@ -99,6 +99,7 @@ void showHeader()
 	printf("By Gernot Wurst and Michael Schmitz, 04/2020\n\n");
 	printf("License: Creative Commons CC-BY-NC-SA-4.0, see\n");
 	printf("https://creativecommons.org/licenses/by-nc-sa/4.0/ \n\n");
+	printf("Contact: contact@prospectum.com");
 	printf("------------------------------------------------------------------------------------------------------------------\n\n");
 }
 
