@@ -5,6 +5,8 @@ void convertHW5HW4CODM(File source, File destination)
 	XmlDocument odf(source);
 	auto root = odf.getDocumentElement();
 
+	//TODO: Check if auto-compacted. If true, refuse to process and report error
+
 	root->setAttribute("FileFormatVersion", "4.00");
 
 	auto _General = root->getChildByAttribute("ObjectType", "_General");
@@ -25,6 +27,8 @@ void convertHW5HW4NATIVE(File source, File destination)
 {
 	XmlDocument odf(source);
 	auto Hauptwerk = odf.getDocumentElement();
+
+	//TODO: Check if auto-compacted. If true, refuse to process and report error
 
 	Hauptwerk->setAttribute("FileFormatVersion", "4.00");
 
@@ -94,24 +98,25 @@ void convertHW5HW4NATIVE(File source, File destination)
 
 void showHeader()
 {
-	printf("------------------------------------------------------------------------------------------------------------------\n\n");
-	printf(">>> PROSPECTUM HW5 to HW4 ODF converter v 1.0 <<<\n\n");
-	printf("By Gernot Wurst and Michael Schmitz, 04/2020\n\n");
-	printf("License: Creative Commons CC-BY-NC-SA-4.0, see\n");
-	printf("https://creativecommons.org/licenses/by-nc-sa/4.0/ \n\n");
-	printf("Contact: contact@prospectum.com\n\n");
-	printf("------------------------------------------------------------------------------------------------------------------\n\n");
+	printf("******************************************************************************************************************\n");
+	printf("*                                 PROSPECTUM HW5 to HW4 ODF converter v 1.0                                      *\n");
+	printf("******************************************************************************************************************\n");
+	printf("By     : Gernot Wurst and Michael Schmitz, 04/2020\n");
+	printf("License: Creative Commons CC-BY-NC-SA-4.0, see https://creativecommons.org/licenses/by-nc-sa/4.0/ \n");
+	printf("Contact: contact@prospectum.com\n");
+	printf("*******************************************************************************************************************\n\n");
 }
 
 void showInstructions()
 {
-	printf(" Error: Wrong number of arguments! use\n\n");
+	printf(" Error: Wrong number of arguments! Use\n");
 	printf("  1. Conversion mode. Values are CODM and NATIVE\n");
 	printf("  2. Source file (full path)\n");
 	printf("  3. Destination file (full path)\n");
 	printf("  4. Optional: Add REPLACE to allow destination file to be overwritten\n\n");
 	printf("  Example: HW5toHW4.exe CODM ExampleOrgan1HW5.CustomOrgan_Hauptwerk_xml ExampleOrgan1HW4.CustomOrgan_Hauptwerk_xml\n\n");
-	printf("------------------------------------------------------------------------------------------------------------------\n\n");
+	printf("  ATTENTION: ODFs MUST NOT BE AUTO-COMPACTED! PLEASE TURN OFF AUTO-COMPACTING IN HAUPTWERK!");
+	printf("******************************************************************************************************************\n\n");
 }
 
 int main (int argc, char* argv[])
