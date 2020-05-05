@@ -101,7 +101,7 @@ void showHeader()
 	printf("******************************************************************************************************************\n");
 	printf("*                                 PROSPECTUM HW5 to HW4 ODF converter v 1.0                                      *\n");
 	printf("******************************************************************************************************************\n");
-	printf("By     : Gernot Wurst and Michael Schmitz, 04/2020\n");
+	printf("By     : Gernot Wurst and Christoph Schmitz, 04/2020\n");
 	printf("License: Creative Commons CC-BY-NC-SA-4.0, see https://creativecommons.org/licenses/by-nc-sa/4.0/ \n");
 	printf("Contact: contact@prospectum.com\n");
 	printf("*******************************************************************************************************************\n\n");
