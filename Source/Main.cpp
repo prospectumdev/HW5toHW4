@@ -99,7 +99,7 @@ void convertHW5HW4NATIVE(File source, File destination)
 void showHeader()
 {
 	printf("******************************************************************************************************************\n");
-	printf("*                                 PROSPECTUM HW5 to HW4 ODF converter v 1.0                                      *\n");
+	printf("*                                 PROSPECTUM HW5 to HW4 ODF converter v 1.02                                     *\n");
 	printf("******************************************************************************************************************\n");
 	printf("By     : Gernot Wurst and Christoph Schmitz, 04/2020\n");
 	printf("License: Creative Commons CC-BY-NC-SA-4.0, see https://creativecommons.org/licenses/by-nc-sa/4.0/ \n");
@@ -111,8 +111,8 @@ void showInstructions()
 {
 	printf(" Error: Wrong number of arguments! Use\n");
 	printf("  1. Conversion mode. Values are CODM and NATIVE\n");
-	printf("  2. Source file (full path)\n");
-	printf("  3. Destination file (full path)\n");
+	printf("  2. Source file (must be in the same directory!!!)\n");
+	printf("  3. Destination file (must be in the same directory!!!)\n");
 	printf("  4. Optional: Add REPLACE to allow destination file to be overwritten\n\n");
 	printf("  Example: HW5toHW4.exe CODM ExampleOrgan1HW5.CustomOrgan_Hauptwerk_xml ExampleOrgan1HW4.CustomOrgan_Hauptwerk_xml\n\n");
 	printf("  ATTENTION: ODFs MUST NOT BE AUTO-COMPACTED! PLEASE TURN OFF AUTO-COMPACTING IN HAUPTWERK!");
@@ -135,8 +135,8 @@ int main (int argc, char* argv[])
 	String replace;
 	if (argc == 5) replace = String(argv[4]);
 
-	File source(fnSource);
-	File destination(fnDestination);
+	File source(File::getCurrentWorkingDirectory().getFullPathName() + "/" + fnSource);
+	File destination(File::getCurrentWorkingDirectory().getFullPathName() + "/" + fnDestination);
 	
 	if (!source.existsAsFile())
 	{
