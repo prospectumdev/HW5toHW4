@@ -23,7 +23,7 @@ void convertHW5HW4CODM(File source, File destination)
 	root->writeTo(destination);
 }
 
-void convertHW5HW4NATIVE(File source, File destination)
+void convertHWX_to_HW4NATIVE(File source, File destination)
 {
 	XmlDocument odf(source);
 	auto Hauptwerk = odf.getDocumentElement();
@@ -46,6 +46,13 @@ void convertHW5HW4NATIVE(File source, File destination)
 	_General->getChildByName("Control_MinimumHauptwerkVersion")->addTextElement("4.00");
 	_General->getChildByName("Control_CurrentHauptwerkVersion")->deleteAllTextElements();
 	_General->getChildByName("Control_CurrentHauptwerkVersion")->addTextElement("4.00");
+
+	auto ContinuousControl = Hauptwerk->getChildByAttribute("ObjectType", "ContinuousControl");
+	for (int i = 0; i < ContinuousControl->getNumChildElements(); i++)
+	{
+		auto l = ContinuousControl->getChildElement(i);
+		l->deleteAllChildElementsWithTagName("MouseClickAndDragMode");
+	}
 
 	struct Replacement
 	{
@@ -99,7 +106,7 @@ void convertHW5HW4NATIVE(File source, File destination)
 void showHeader()
 {
 	printf("******************************************************************************************************************\n");
-	printf("*                                 PROSPECTUM HW5 to HW4 ODF converter v 1.02                                     *\n");
+	printf("*                                 PROSPECTUM HWx/5 to HW4 ODF converter v 1.02                                   *\n");
 	printf("******************************************************************************************************************\n");
 	printf("By     : Gernot Wurst and Christoph Schmitz, 04/2020\n");
 	printf("License: Creative Commons CC-BY-NC-SA-4.0, see https://creativecommons.org/licenses/by-nc-sa/4.0/ \n");
@@ -110,7 +117,7 @@ void showHeader()
 void showInstructions()
 {
 	printf(" Error: Wrong number of arguments! Use\n");
-	printf("  1. Conversion mode. Values are CODM and NATIVE\n");
+	printf("  1. Conversion mode. Values are CODM(HW5 only) and NATIVE(for all HW versions >4)\n");
 	printf("  2. Source file (must be in the same directory!!!)\n");
 	printf("  3. Destination file (must be in the same directory!!!)\n");
 	printf("  4. Optional: Add REPLACE to allow destination file to be overwritten\n\n");
@@ -151,7 +158,7 @@ int main (int argc, char* argv[])
 	}
 
 	if (mode == "CODM")		   convertHW5HW4CODM(source, destination);
-	else if (mode == "NATIVE") convertHW5HW4NATIVE(source, destination);
+	else if (mode == "NATIVE") convertHWX_to_HW4NATIVE(source, destination);
 	else
 	{
 		printf(" Error: Mode is %s but must be CODM or NATIVE!\n\n",mode.toStdString().c_str());
