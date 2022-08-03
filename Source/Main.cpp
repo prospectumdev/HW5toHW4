@@ -47,6 +47,7 @@ void convertHWX_to_HW4NATIVE(File source, File destination)
 	_General->getChildByName("Control_CurrentHauptwerkVersion")->deleteAllTextElements();
 	_General->getChildByName("Control_CurrentHauptwerkVersion")->addTextElement("4.00");
 
+<<<<<<< HEAD
 	auto AudioEngine_EnablePlayingWithoutInterpolation = _General->getChildByName("AudioEngine_EnablePlayingWithoutInterpolation");
 	if (AudioEngine_EnablePlayingWithoutInterpolation == nullptr)
 	{
@@ -55,6 +56,8 @@ void convertHWX_to_HW4NATIVE(File source, File destination)
 		_General->addChildElement(epwi);
 	}
 
+=======
+>>>>>>> dd03ab98a6c2dd8f237dd04884354e0338199279
 	auto ContinuousControl = Hauptwerk->getChildByAttribute("ObjectType", "ContinuousControl");
 	for (int i = 0; i < ContinuousControl->getNumChildElements(); i++)
 	{
@@ -114,7 +117,11 @@ void convertHWX_to_HW4NATIVE(File source, File destination)
 void showHeader()
 {
 	printf("******************************************************************************************************************\n");
+<<<<<<< HEAD
 	printf("*                                 PROSPECTUM HW7/6/5 to HW4 ODF converter v 1.2                                  *\n");
+=======
+	printf("*                                 PROSPECTUM HW7/6/5 to HW4 ODF converter v 1.02                                   *\n");
+>>>>>>> dd03ab98a6c2dd8f237dd04884354e0338199279
 	printf("******************************************************************************************************************\n");
 	printf("By     : Gernot Wurst and Christoph Schmitz, 04/2020 - 08/2022\n");
 	printf("License: Creative Commons CC-BY-NC-SA-4.0, see https://creativecommons.org/licenses/by-nc-sa/4.0/ \n");

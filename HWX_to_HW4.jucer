@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="fkEJNO" name="HW5toHW4" projectType="consoleapp" jucerVersion="5.4.7">
-  <MAINGROUP id="ySBfIx" name="HW5toHW4">
+<JUCERPROJECT id="fkEJNO" name="HWXtoHW4" projectType="consoleapp" displaySplashScreen="1"
+              jucerFormatVersion="1">
+  <MAINGROUP id="ySBfIx" name="HWXtoHW4">
     <GROUP id="{8BE872F8-8EC7-8FF9-AD29-C368BA64497E}" name="Source">
       <FILE id="rkkUyy" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
     </GROUP>
