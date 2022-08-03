@@ -106,7 +106,7 @@ void convertHWX_to_HW4NATIVE(File source, File destination)
 void showHeader()
 {
 	printf("******************************************************************************************************************\n");
-	printf("*                                 PROSPECTUM HWx/5 to HW4 ODF converter v 1.02                                   *\n");
+	printf("*                                 PROSPECTUM HW7/6/5 to HW4 ODF converter v 1.02                                   *\n");
 	printf("******************************************************************************************************************\n");
 	printf("By     : Gernot Wurst and Christoph Schmitz, 04/2020\n");
 	printf("License: Creative Commons CC-BY-NC-SA-4.0, see https://creativecommons.org/licenses/by-nc-sa/4.0/ \n");
@@ -117,11 +117,11 @@ void showHeader()
 void showInstructions()
 {
 	printf(" Error: Wrong number of arguments! Use\n");
-	printf("  1. Conversion mode. Values are CODM(HW5 only) and NATIVE(for all HW versions >4)\n");
+	printf("  1. Conversion mode. Values are CODM and NATIVE(HW7/6/5 are supported)\n");
 	printf("  2. Source file (must be in the same directory!!!)\n");
 	printf("  3. Destination file (must be in the same directory!!!)\n");
 	printf("  4. Optional: Add REPLACE to allow destination file to be overwritten\n\n");
-	printf("  Example: HW5toHW4.exe CODM ExampleOrgan1HW5.CustomOrgan_Hauptwerk_xml ExampleOrgan1HW4.CustomOrgan_Hauptwerk_xml\n\n");
+	printf("  Example: HWXtoHW4.exe CODM ExampleOrgan1HW5.CustomOrgan_Hauptwerk_xml ExampleOrgan1HW4.CustomOrgan_Hauptwerk_xml\n\n");
 	printf("  ATTENTION: ODFs MUST NOT BE AUTO-COMPACTED! PLEASE TURN OFF AUTO-COMPACTING IN HAUPTWERK!");
 	printf("******************************************************************************************************************\n\n");
 }
