@@ -7,7 +7,7 @@ void convertHW5HW4CODM(File source, File destination)
 
 	//TODO: Check if auto-compacted. If true, refuse to process and report error
 
-	root->setAttribute("FileFormatVersion", "4.00");
+	root->setAttribute("FileFormatVersion", "4.00"); 
 
 	auto _General = root->getChildByAttribute("ObjectType", "_General");
 	_General = _General->getChildByName("_General");
