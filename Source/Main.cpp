@@ -103,16 +103,17 @@ void convertHWX_to_HW4NATIVE(XmlDocument& odf, File destination)
 		//replace tags specified in replacements
 		for (int k = 0; k < replacements.size(); k++)
 		{
-			auto r_HW5 = l->getChildByName(replacements[k].nameHWX);
-			auto r_HW4 = l->createTextElement(replacements[k].nameHW4);
+			auto tag = l->getChildByName(replacements[k].nameHWX);
+			tag->setTagName(replacements[k].nameHW4);
+			
 			//percent to db conversion if required
 			if (replacements[k].convertPercentToDB)
 			{
-				double val = stod(r_HW5->getAllSubText().toStdString());
+				double val = stod(tag->getAllSubText().toStdString());
 				val = Decibels::gainToDecibels(val / 100.0);
-				r_HW4->setText(String(val));
+				tag->deleteAllTextElements();
+				tag->addTextElement(String(val));
 			}
-			l->replaceChildElement(l->getChildByName(replacements[k].nameHWX), r_HW4);
 		}
 	}
 
@@ -122,7 +123,7 @@ void convertHWX_to_HW4NATIVE(XmlDocument& odf, File destination)
 void showHeader()
 {
 	printf("******************************************************************************************************************\n");
-	printf("*                                 PROSPECTUM HW5/6/7 to HW4 ODF converter v 1.25                                 *\n");
+	printf("*                                 PROSPECTUM HW5/6/7 to HW4 ODF converter v 1.26                                 *\n");
 	printf("******************************************************************************************************************\n");
 	printf("By     : Gernot Wurst and Christoph Schmitz, 04/2020 - 08/2022\n");
 	printf("License: Creative Commons CC-BY-NC-SA-4.0, see https://creativecommons.org/licenses/by-nc-sa/4.0/ \n");
