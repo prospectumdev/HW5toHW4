@@ -123,7 +123,7 @@ void convertHWX_to_HW4NATIVE(XmlDocument& odf, File destination)
 void showHeader()
 {
 	printf("******************************************************************************************************************\n");
-	printf("*                                 PROSPECTUM HW5/6/7 to HW4 ODF converter v 1.26                                 *\n");
+	printf("*                                 PROSPECTUM HW5/6/7 to HW4 ODF converter v 1.27                                 *\n");
 	printf("******************************************************************************************************************\n");
 	printf("By     : Gernot Wurst and Christoph Schmitz, 04/2020 - 08/2022\n");
 	printf("License: Creative Commons CC-BY-NC-SA-4.0, see https://creativecommons.org/licenses/by-nc-sa/4.0/ \n");
@@ -133,13 +133,12 @@ void showHeader()
 
 void showInstructions()
 {
-	printf(" Error: Wrong number of arguments! Use\n");
-	printf("  1. Source file (must be in the same directory !!!)\n");
-	printf("  2. Destination file (must be in the same directory !!!)\n");
-	printf("  3. Optional: Add REPLACE to allow destination file to be overwritten\n\n");
-	printf("  Example: ./HWxToHW4 HW567.CustomOrgan_Hauptwerk_xml HW4.CustomOrgan_Hauptwerk_xml [REPLACE] or\n");
-	printf("           ./HWxToHW4 HW567.Organ_Hauptwerk_xml HW4.Organ_Hauptwerk_xml [REPLACE]\n\n");
-	printf("  ATTENTION: ODFs MUST NOT BE AUTO-COMPACTED! PLEASE TURN OFF AUTO-COMPACTING IN HAUPTWERK!\n");
+	printf("Usage: HWxToHW4 file1 file2 [REPLACE]\n\n");
+	printf("  file1      Source file      (must be in the same directory !!!)\n");
+	printf("  file2      Destination file (must be in the same directory !!!)\n\n");
+	printf("<Switch> (optional)\n\n");
+	printf("  REPLACE    Allow destination file to be overwritten\n\n");
+	printf("ATTENTION: ODFs MUST NOT BE AUTO-COMPACTED! PLEASE TURN OFF AUTO-COMPACTING IN HAUPTWERK!\n");
 	printf("******************************************************************************************************************\n\n");
 }
 
